@@ -7,5 +7,6 @@ mongoose.connect(process.env.MONGODB_URI  || 'mongodb://localhost/wayfarer-db', 
 
 module.exports= {
     Post: require('./Post'),
-    City: require('./City')
+    City: require('./City'),
+    User: require('./User')
 }

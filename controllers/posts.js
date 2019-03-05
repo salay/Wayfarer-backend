@@ -7,4 +7,8 @@ module.exports = {
             res.json(posts)
         })
     },
+
+//     posts : (req, res) => {
+//     },
+// 
 }

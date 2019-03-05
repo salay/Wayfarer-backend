@@ -5,4 +5,8 @@ const
 
 router.get('/', controllers.posts.index)
 
+//router.post('/posts', controllers.posts.posts);
+//delte
+//put
+
 module.exports = router;
