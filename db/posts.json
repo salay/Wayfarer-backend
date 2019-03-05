@@ -1,0 +1,15 @@
+[
+    {  "title": "San Francisco was awesome",
+        "location": "San Francisco",
+        "text": "never seen a place like it before"
+        },
+    {
+        "title": "San Francisco was terrible",
+        "location": "San Francisco",
+        "text": "there's poop on the sidewalks"
+     },
+    {   "title": "Oakland was the most diverse city in the world",
+        "location": "Oakland",
+        "text": "there's so many people here!"
+    }
+]

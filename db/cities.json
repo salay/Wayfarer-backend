@@ -1,0 +1,15 @@
+[
+    {  "city": "San Francisco",
+    "country": "United States",
+    "image": "https://images.unsplash.com/photo-1472487883843-090fcd92e0c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=661&q=80"
+    },
+{
+    "city": "Oakland",
+    "country": "United States",
+    "image": "https://www.hsno.com/wp-content/uploads/2014/07/iStock-536314095-Oakland-1024x683.jpg"
+ },
+{   "city": "Budapest",
+    "country": "Hungary",
+    "image": "https://brightcove04pmdo-a.akamaihd.net/5104226627001/5104226627001_5515999951001_5214933106001-vs.jpg?pubId=5104226627001&videoId=5214933106001"
+}
+]
