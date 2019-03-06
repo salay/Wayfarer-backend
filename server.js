@@ -3,6 +3,7 @@ const
     cors = require('cors'),
     postRoutes = require('./routes/posts'),
     cityRoutes = require('./routes/cities'),
+    userRoutes = require('./routes/user'),
     bodyParser = require('body-parser')
 
 
@@ -15,7 +16,11 @@ app.use(express.static('public'))
 
 app.use('/api/posts', postRoutes)
 app.use('/api/cities', cityRoutes)
+app.use('/users', userRoutes)
 
 app.listen(process.env.PORT || 3001)
 console.log("The Server is running!")
+
+//////user Crud
+
 //app.listen(3001, () => console.log('Listening on port 3001 :)'))
