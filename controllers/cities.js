@@ -1,4 +1,4 @@
-db = require('../models')
+db = require('../models');
 
 module.exports = {
     index: (req,res)=>{
@@ -6,4 +6,10 @@ module.exports = {
             res.json(cities)
         })
     },
+    // create: (req, res) => {
+    //     console.log(req);
+    //     db.City.create({ }, (err, newCity) => {
+    //         res.send(newCity)
+    //     })
+    // }
 }

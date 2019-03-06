@@ -7,4 +7,12 @@ module.exports = {
             res.json(posts)
         })
     },
+    // postCreation: (req, res)=>{
+    //     db.Post.create({ 
+
+    //     }, (err, newCity)=>{
+    //         res.json(newcity)
+    //     })
+    // },
 }
+
