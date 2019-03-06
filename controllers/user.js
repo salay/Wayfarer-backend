@@ -43,13 +43,17 @@ const
                 // we are creating a User object with their email address and OUR hashed password
                 db.User.create({
                   email: req.body.email,
-                  password: hash
+                  password: hash,
+                  fullname:req.body.fullname,
+                  city:req.body.city
                 }, (err, newUser) => {
                     console.log('here is the result',newUser)
                   // if(err){ return res.status(500).json({err})}
                   // we send our new data back to user or whatever you want to do.
                   let user ={
                     email: newUser.email,
+                    fullname: newUser.fullname,
+                    city: newUser.city,
                     _id: newUser._id
                   } 
                   
@@ -141,4 +145,34 @@ const
           res.status(500).json({err})
         })
       },
+
+    updateUser : (req,res) => {
+      const userId = req.body._id;
+        db.User.findOneAndUpdate(
+          {_id: userId},
+          req.body,
+          { new: true},
+          (err, updatedUser) => {
+            if(err) {throw err; }
+            res.json(updatedUser);
+        });
+    },
+
+    all: (req,res) => {
+      db.User.find({}, (err,allUser)=>{
+        res.json(allUser)
+    })
+    },
+
+    thisUser: (req,res) => {
+      db.User.findOne({email: req.body.email}, (err,foundUser) =>{
+        res.json(foundUser)
+      })
+    },
+
+    deleteUser: (req,res) => {
+      db.User.findOneAndDelete({email: req.body.email}, (err,deletedUser)=>{
+        res.json(deletedUser)
+    })
+    }
 }

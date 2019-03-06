@@ -4,12 +4,14 @@ const UserSchema = mongoose.Schema({
   email: { 
     type: String, 
     required: true, 
-    unique: true, 
-     },
-  password: 
-  { type: String, 
+    unique: true},
+  password: { 
+    type: String, 
     required: true, 
-    select: false}
+    select: false},
+  fullname: String,
+  city: String,
+  posts:[PostSchema.schema]
 })
 
 // userSchema.set('toJSON', {
