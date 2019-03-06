@@ -9,6 +9,9 @@ module.exports = {
     },
 
 
+
+
+
     newpost : (req,res) => {
         console.log(req.body)
     db.Post.create({
@@ -39,4 +42,5 @@ module.exports = {
 
 
 
-} }
+} 
+}

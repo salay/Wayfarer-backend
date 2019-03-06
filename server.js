@@ -19,6 +19,7 @@ app.use('/api/cities', cityRoutes)
 app.use('/user', userRoutes)
 
 app.listen(process.env.PORT || 3001)
+console.log("The Server is running!")
 
 
 //app.listen(3001, () => console.log('Listening on port 3001 :)'))
