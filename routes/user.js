@@ -9,7 +9,6 @@ router.post('/signup', controllers.user.signup);
 router.post('/login', controllers.user.login);
 
 
-
 //this is a token check? I think
 router.use((req, res, next) => {
   console.log('activated')
@@ -29,9 +28,6 @@ router.use((req, res, next) => {
     res.sendStatus(403);
   }
 })
-
-
-
 
 router.get('/', controllers.user.show)
 

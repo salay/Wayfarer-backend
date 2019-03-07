@@ -18,6 +18,6 @@ const UserSchema = mongoose.Schema({
 //       return ret
 //   }
 // })
-//ask dalton about this.
+//this is to hide the password ^^^
 
 module.exports = mongoose.model('User', UserSchema);
