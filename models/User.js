@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
+const PostSchema = require('./Post');
 
 const UserSchema = mongoose.Schema({
+  username: String,
   email: { 
     type: String, 
     required: true, 
@@ -10,7 +12,8 @@ const UserSchema = mongoose.Schema({
     required: true, 
     select: false},
   fullname: String,
-  city: String,
+  currentcity: String,
+  // joinDate: new Date(),
   posts:[PostSchema.schema]
 })
 

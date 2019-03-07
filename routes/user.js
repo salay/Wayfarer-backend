@@ -9,8 +9,9 @@ router.post('/signup', controllers.user.signup);
 router.post('/login', controllers.user.login);
 router.put('/update', controllers.user.updateUser);
 router.get('/all', controllers.user.all);
-router.get('/thisUser', controllers.user.thisUser);
+router.get('/:userId', controllers.user.thisUser);
 router.delete('/deleteUser', controllers.user.deleteUser);
+// router.get('/:userId/post',controllers.user.userPost)
 
 
 
