@@ -8,6 +8,15 @@ module.exports = {
         })
     },
 
+    onePost: (req,res)=>{ 
+        const postID = req.params.postId
+        db.Post.findById({_id: postID}, (err,foundPost)=>{
+            console.log(foundPost)
+            console.log(postID)
+            res.json(foundPost)
+        })
+    },
+
     // newpost : (req,res) => {
     //     console.log(req.body)
     // db.Post.create({
@@ -45,7 +54,7 @@ module.exports = {
           let newPost = new db.Post({ // creating a new POST from the found user 
             title: req.body.title,
             location: req.body.location,
-            text: req.body.text,
+            text: req.body.text
           });
           
           foundUser.posts.push(newPost); // pushing the new post into the unique user's posts array
