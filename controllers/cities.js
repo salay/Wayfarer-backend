@@ -7,10 +7,13 @@ module.exports = {
             res.json(cities)
         })
     },
-    // create: (req, res) => {
-    //     console.log(req);
-    //     db.City.create({ }, (err, newCity) => {
-    //         res.send(newCity)
-    //     })
-    // }
+
+    findCity: (req,res) => {
+        const city = req.params.location
+        db.Post.find({location:city}, (err,foundCity)=>{
+            if(err) return console.log(err)
+            console.log(foundCity)
+            res.json(foundCity)
+        })
+    }
 }

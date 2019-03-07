@@ -2,6 +2,8 @@ const
   bcrypt = require('bcrypt'),
   db = require('../models'),
   jwt = require('jsonwebtoken')
+  var date = new Date().toLocaleDateString();
+
 
 
   module.exports = {
@@ -45,7 +47,8 @@ const
                   email: req.body.email,
                   password: hash,
                   fullname:req.body.fullname,
-                  city:req.body.city
+                  currentcity:req.body.currentcity,
+                  joinDate:  req.body.joinDate,
                 }, (err, newUser) => {
                     console.log('here is the result',newUser)
                   // if(err){ return res.status(500).json({err})}
@@ -53,7 +56,8 @@ const
                   let user ={
                     email: newUser.email,
                     fullname: newUser.fullname,
-                    city: newUser.city,
+                    currentcity: newUser.currentcity,
+                    joinDate: newUser.joinDate,
                     _id: newUser._id
                   } 
                   
@@ -165,7 +169,8 @@ const
     },
 
     thisUser: (req,res) => {
-      db.User.findOne({email: req.body.email}, (err,foundUser) =>{
+      let userId = req.params.userId
+      db.User.findById({_id: userId}, (err,foundUser) =>{
         res.json(foundUser)
       })
     },
@@ -174,5 +179,11 @@ const
       db.User.findOneAndDelete({email: req.body.email}, (err,deletedUser)=>{
         res.json(deletedUser)
     })
-    }
+    },
+
+    // userPost: (res,res) => {
+    //   db.Post.find({}, (err,userPost) =>{
+    //     res.json.(userPost)
+    //   })
+    // }
 }
