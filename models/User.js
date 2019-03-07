@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const PostSchema = require('./Post');
+Schema = mongoose.Schema;
 
 const UserSchema = mongoose.Schema({
   username: String,
@@ -14,7 +14,10 @@ const UserSchema = mongoose.Schema({
   fullname: String,
   currentcity: String,
   // joinDate: new Date(),
-  posts:[PostSchema.schema]
+  posts:[{
+    type: Schema.Types.ObjectId,
+    ref: 'Post' 
+  }]
 })
 
 // userSchema.set('toJSON', {

@@ -1,19 +1,22 @@
 db = require('../models');
 
 module.exports = {
-    index: (req,res)=>{
-        db.City.find({}, (err,cities)=>{
-           
-            res.json(cities)
-        })
-    },
+    // index: (req,res)=>{
+    //     db.City.find({}, (err,cities)=>{
+    //         res.json(cities)
+    //     })
+    // },
 
     findCity: (req,res) => {
-        const city = req.params.location
-        db.Post.find({location:city}, (err,foundCity)=>{
-            if(err) return console.log(err)
-            console.log(foundCity)
-            res.json(foundCity)
+        const locationName = req.params.location
+        db.User.find({}, (err,foundUser)=>{
+
+            // if(err) return console.log(err)
+            // if (locationName == foundUser[3].posts[0].location) {
+            // console.log(foundUser)
+            // res.json(foundUser[3].posts) }
+            // else (console.log("Wrong City"))
+            res.json(foundUser)
         })
     }
 }
