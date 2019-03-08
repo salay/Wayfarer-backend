@@ -169,9 +169,10 @@ const
     },
 
     all: (req,res) => {
-      db.User.find({}, (err,allUser)=>{
+      db.User.find({}).populate('Posts').exec((err, allUser) => {
+        // add some error catching
         res.json(allUser)
-    })
+      })
     },
 
     thisUser: (req,res) => {

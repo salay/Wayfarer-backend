@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// const UserSchema = require('./User');
+Schema = mongoose.Schema
 
 const PostSchema = new mongoose.Schema({
     title: String,
@@ -8,8 +8,10 @@ const PostSchema = new mongoose.Schema({
     //location: [CitySchema.schema],
     location: String,
     text: String,
-    image: String,
-    // user: [UserSchema.schema]
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 })
 
 module.exports = mongoose.model('Post', PostSchema)
