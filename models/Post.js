@@ -6,15 +6,12 @@ const PostSchema = new mongoose.Schema({
     //how to specifically reference the city & country in the city schema
     //this comes from the dropdown
     //location: [CitySchema.schema],
-    location: [{
-        type: Schema.Types.ObjectId,
-        ref: 'City'
-    }],
+    location: String,
     text: String,
-    user: [{
+    user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }]
+    }
 })
 
 module.exports = mongoose.model('Post', PostSchema)

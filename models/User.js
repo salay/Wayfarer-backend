@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+// const PostSchema = require('./Post');
 Schema = mongoose.Schema;
 
 const UserSchema = mongoose.Schema({
@@ -6,17 +7,19 @@ const UserSchema = mongoose.Schema({
   email: { 
     type: String, 
     required: true, 
-    unique: true},
+    unique: true
+  },
   password: { 
     type: String, 
     required: true, 
-    select: false},
+    select: false
+  },
   fullname: String,
   currentcity: String,
   // joinDate: new Date(),
-  posts:[{
-    type: Schema.Types.ObjectId,
-    ref: 'Post' 
+  posts: [{
+    type: Schema.Types.Object,
+    ref: 'Post'
   }]
 })
 

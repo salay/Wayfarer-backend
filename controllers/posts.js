@@ -47,24 +47,47 @@ module.exports = {
         });
     }, 
         // finding an id by a particular user and creating a new post for that user
-    newUserPost: (req,res) => {
-    let userId = req.params.userId // userID is refering to a particular user ID which is defined in the post routes. if that ID matches a user ID in the database, user is found
-      db.User.findOne({_id: userId}, (err,foundUser) => {
-          if (err) return console.log(err);
-          let newPost = new db.Post({ // creating a new POST from the found user 
-            title: req.body.title,
-            location: req.body.location,
-            text: req.body.text
-          });
+    newUserPost: (req, res) => {
+      db.Post.create({
+        title: req.body.title,
+        location: req.body.location,
+        text: req.body.text
+      }, (err, newPost) => {
+        if (err) { throw err }
+
+        // This line will need to change to match the token
+        let userId = req.params.userId;
+        
+        db.User.findById({ _id: userId }, (err, foundUser) => {
+          console.log("///// Before")
+          console.log(newPost)
+
+          foundUser.posts.push(newPost);
           
-          foundUser.posts.push(newPost); // pushing the new post into the unique user's posts array
-      
-          foundUser.save((err, newPost) => { // saving to the db
-            if (err) return console.log(err);
-            res.json(newPost) // returning as JSON
-          });
+          console.log("///// After")
+          console.log(foundUser);
+          
+          foundUser.save((err, savedUser) => {
+            if (err) { throw err }
+            res.json(savedUser);
+          })
         })
-      },
+      });
+
+      // userID is refering to a particular user ID which is defined in the post routes. if that ID matches a user ID in the database, user is found
+      // let userID = req.params.userId
+
+      // db.User.findById({_id: userID}, (err,foundUser) => {
+      //   if (err) return console.log(err);
+
+      //   foundUser.posts.push(newPost); // pushing the new post into the unique user's posts array
+
+      //   foundUser.save((err, newPost) => { // saving to the db
+      //     if (err) return console.log(err);
+      //     res.json() // returning as JSON
+      //   });
+      // })
+    },
 
       allUserPosts: (req,res) => {
           let userId = req.params.userId

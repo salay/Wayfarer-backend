@@ -8,15 +8,16 @@ module.exports = {
     // },
 
     findCity: (req,res) => {
-        const locationName = req.params.location
-        db.User.find({}, (err,foundUser)=>{
+        const locationName = req.params.locationName
+        db.Post.find({location:locationName}, (err,foundCity)=>{
 
             // if(err) return console.log(err)
             // if (locationName == foundUser[3].posts[0].location) {
             // console.log(foundUser)
             // res.json(foundUser[3].posts) }
             // else (console.log("Wrong City"))
-            res.json(foundUser)
+            console.log(foundCity)
+            res.json(foundCity)
         })
     }
 }
