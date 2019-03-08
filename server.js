@@ -16,7 +16,7 @@ app.use(express.static('public'))
 
 app.use('/api/posts', postRoutes)
 app.use('/api/cities', cityRoutes)
-app.use('/user', userRoutes)
+app.use('/users', userRoutes)
 
 app.listen(process.env.PORT || 3001)
 console.log("The Server is running!")

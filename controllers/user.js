@@ -20,6 +20,7 @@ const
     //this is the start of the next key value pair
 
     signup : (req, res) => {
+      console.log('in signup')
       console.log(req.body);
       // Check to see if email is already in db
       db.User.find({email: req.body.email})
@@ -47,6 +48,7 @@ const
                   email: req.body.email,
                   password: hash,
                   fullname:req.body.fullname,
+                  username: req.body.username,
                   currentcity:req.body.currentcity,
                   joinDate:  req.body.joinDate,
                 }, (err, newUser) => {
@@ -54,6 +56,7 @@ const
                   // if(err){ return res.status(500).json({err})}
                   // we send our new data back to user or whatever you want to do.
                   let user ={
+                    username: newUser.username,
                     email: newUser.email,
                     fullname: newUser.fullname,
                     currentcity: newUser.currentcity,
@@ -118,7 +121,10 @@ const
 
               let user ={
                 email: users[0].email,
-                _id: users[0]._id
+                _id: users[0]._id,
+                fullname: users[0].fullname,
+                username: users[0].username,
+                currentcity: users[0].currentcity,
               } 
               jwt.sign(
                 user,

@@ -8,6 +8,7 @@ const PostSchema = new mongoose.Schema({
     //location: [CitySchema.schema],
     location: String,
     text: String,
+    image: String,
     // user: [UserSchema.schema]
 })
 
