@@ -7,6 +7,11 @@ const
 
 router.post('/signup', controllers.user.signup);
 router.post('/login', controllers.user.login);
+router.put('/update', controllers.user.updateUser);
+router.get('/all', controllers.user.all);
+router.get('/:userId', controllers.user.thisUser);
+router.delete('/deleteUser', controllers.user.deleteUser);
+// router.get('/:userId/post',controllers.user.userPost)
 
 
 //this is a token check? I think
@@ -29,6 +34,9 @@ router.use((req, res, next) => {
   }
 })
 
+
 router.get('/', controllers.user.show)
+
+
 
 module.exports = router;

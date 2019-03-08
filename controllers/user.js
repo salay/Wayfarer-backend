@@ -2,6 +2,8 @@ const
   bcrypt = require('bcrypt'),
   db = require('../models'),
   jwt = require('jsonwebtoken')
+  var date = new Date().toLocaleDateString();
+
 
 
   module.exports = {
@@ -18,6 +20,7 @@ const
     //this is the start of the next key value pair
 
     signup : (req, res) => {
+      console.log('in signup')
       console.log(req.body);
       // Check to see if email is already in db
       db.User.find({email: req.body.email})
@@ -43,13 +46,21 @@ const
                 // we are creating a User object with their email address and OUR hashed password
                 db.User.create({
                   email: req.body.email,
-                  password: hash
+                  password: hash,
+                  fullname:req.body.fullname,
+                  username: req.body.username,
+                  currentcity:req.body.currentcity,
+                  joinDate:  req.body.joinDate,
                 }, (err, newUser) => {
                     console.log('here is the result',newUser)
                   // if(err){ return res.status(500).json({err})}
                   // we send our new data back to user or whatever you want to do.
                   let user ={
+                    username: newUser.username,
                     email: newUser.email,
+                    fullname: newUser.fullname,
+                    currentcity: newUser.currentcity,
+                    joinDate: newUser.joinDate,
                     _id: newUser._id
                   } 
                   
@@ -110,7 +121,10 @@ const
 
               let user ={
                 email: users[0].email,
-                _id: users[0]._id
+                _id: users[0]._id,
+                fullname: users[0].fullname,
+                username: users[0].username,
+                currentcity: users[0].currentcity,
               } 
               jwt.sign(
                 user,
@@ -141,4 +155,42 @@ const
           res.status(500).json({err})
         })
       },
+
+    updateUser : (req,res) => {
+      const userId = req.body._id;
+        db.User.findOneAndUpdate(
+          {_id: userId},
+          req.body,
+          { new: true},
+          (err, updatedUser) => {
+            if(err) {throw err; }
+            res.json(updatedUser);
+        });
+    },
+
+    all: (req,res) => {
+      db.User.find({}).populate('Posts').exec((err, allUser) => {
+        // add some error catching
+        res.json(allUser)
+      })
+    },
+
+    thisUser: (req,res) => {
+      let userId = req.params.userId
+      db.User.findById({_id: userId}, (err,foundUser) =>{
+        res.json(foundUser)
+      })
+    },
+
+    deleteUser: (req,res) => {
+      db.User.findOneAndDelete({email: req.body.email}, (err,deletedUser)=>{
+        res.json(deletedUser)
+    })
+    },
+
+    // userPost: (res,res) => {
+    //   db.Post.find({}, (err,userPost) =>{
+    //     res.json.(userPost)
+    //   })
+    // }
 }

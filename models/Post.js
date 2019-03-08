@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+Schema = mongoose.Schema
 
 const PostSchema = new mongoose.Schema({
     title: String,
@@ -6,7 +7,11 @@ const PostSchema = new mongoose.Schema({
     //this comes from the dropdown
     //location: [CitySchema.schema],
     location: String,
-    text: String
+    text: String,
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 })
 
 module.exports = mongoose.model('Post', PostSchema)
