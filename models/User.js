@@ -1,29 +1,26 @@
-const mongoose = require('mongoose');
-// const PostSchema = require('./Post');
-Schema = mongoose.Schema;
+    const mongoose = require('mongoose');
+    Schema = mongoose.Schema;
 
-const UserSchema = mongoose.Schema({
-  username: String,
-  image: String,
-  email: { 
-    type: String, 
-    required: true, 
-    unique: true
-  },
-  password: { 
-    type: String, 
-    required: true, 
-    select: false
-  },
-  fullname: String,
-  currentcity: String,
-  // joinDate: new Date(),
-  posts: [{
-    type: Schema.Types.Object,
-    ref: 'Post'
-  }]
-})
+    const UserSchema = mongoose.Schema({
+      username: String,
+      email: { 
+        type: String, 
+        required: true, 
+        unique: true },
+      password: { 
+        type: String, 
+        required: true, 
+        select: false },
+      fullname: String,
+      currentcity: String,
+      joinDate: { type: Date, default: Date.now },
+      posts:[{
+        type: Schema.Types.ObjectId,
+        ref: 'Post' 
+      }]
+    })
 
+<<<<<<< HEAD
 // userSchema.set('toJSON', {
 //   transform: function(doc, ret, opt) {
 //       delete ret['password']
@@ -33,3 +30,6 @@ const UserSchema = mongoose.Schema({
 //this is to hide the password ^^^
 
 module.exports = mongoose.model('User', UserSchema);
+=======
+    module.exports = mongoose.model('User', UserSchema);
+>>>>>>> fb4c91d88adc1f755e5aa7ffdc0b6bd94331a6c8

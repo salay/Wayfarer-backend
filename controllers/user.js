@@ -4,8 +4,7 @@ const
   jwt = require('jsonwebtoken')
   var date = new Date().toLocaleDateString();
 
-
-
+  
   module.exports = {
     show: (req,res)=>{
       console.log('trigger Show', req.userId)
@@ -146,8 +145,6 @@ const
               res.status(401).json({message: "Email/Password incorrect"})
             }
           })
-    
-    
         })
         .catch( err => {
           console.log("OUTSIDE ERROR_")
@@ -155,7 +152,6 @@ const
           res.status(500).json({err})
         })
       },
-
     updateUser : (req,res) => {
       const userId = req.body._id;
         db.User.findOneAndUpdate(
@@ -167,30 +163,22 @@ const
             res.json(updatedUser);
         });
     },
-
     all: (req,res) => {
       db.User.find({}).populate('Posts').exec((err, allUser) => {
         // add some error catching
         res.json(allUser)
       })
     },
-
     thisUser: (req,res) => {
       let userId = req.params.userId
       db.User.findById({_id: userId}, (err,foundUser) =>{
         res.json(foundUser)
       })
     },
-
     deleteUser: (req,res) => {
       db.User.findOneAndDelete({email: req.body.email}, (err,deletedUser)=>{
         res.json(deletedUser)
     })
     },
 
-    // userPost: (res,res) => {
-    //   db.Post.find({}, (err,userPost) =>{
-    //     res.json.(userPost)
-    //   })
-    // }
 }
