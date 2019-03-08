@@ -3,8 +3,10 @@
       router = express.Router(),
       controllers = require('../controllers')
 
-    // route that gets ALL the Cities
-    router.get('/', controllers.cities.index);
+
+router.get('/', controllers.cities.index);
+router.get('/:locationName', controllers.cities.findCity)
+// router.post('/', controllers.posts.create);
 
     // Dynamically finds all POSTS with the matching location VALUE
     router.get('/:locationName', controllers.cities.findCity);
