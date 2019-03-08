@@ -182,9 +182,4 @@ const
     })
     },
 
-    // userPost: (res,res) => {
-    //   db.Post.find({}, (err,userPost) =>{
-    //     res.json.(userPost)
-    //   })
-    // }
 }
