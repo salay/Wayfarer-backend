@@ -31,20 +31,23 @@
       }, 
           // finding an id by a particular user and creating a new post for that user
       newUserPost: (req, res) => {
+        let userId = req.userId
+        console.log(userId)
         db.Post.create({
           title: req.body.title,
           location: req.body.location,
-          text: req.body.text
+          text: req.body.text,
+          user: userId
         }, (err, newPost) => {
           if (err) { throw err }
           // This line will need to change to match the token
           // userID is refering to a particular user ID which is defined in the post routes. if that ID matches a user ID in the database, user is found
-          let userId = req.params.userId;
+          // let userId = req.params.userId;
           
-          db.User.findById({ _id: userId }, (err, foundUser) => {
+          db.User.findById(req.params.userId, (err, foundUser) => {
             console.log("///// Before")
             console.log(newPost)
-            foundUser.posts.push(newPost); // pushing the new post into the unique user's posts array
+            // foundUser.posts.push(newPost); // pushing the new post into the unique user's posts array
             
             console.log("///// After")
             console.log(foundUser);
@@ -55,8 +58,8 @@
             })
           })
         });
-
       },
+
         allUserPosts: (req,res) => {
             let userId = req.params.userId
             db.User.findById({_id: userId}, (err,foundUser) =>{

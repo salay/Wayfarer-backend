@@ -1,4 +1,5 @@
     const mongoose = require('mongoose');
+    // const PostSchema = require('./Post')
     Schema = mongoose.Schema;
 
     const UserSchema = mongoose.Schema({
@@ -14,10 +15,13 @@
       fullname: String,
       currentcity: String,
       joinDate: { type: Date, default: Date.now },
-      posts:[{
+      posts: [{
         type: Schema.Types.ObjectId,
         ref: 'Post' 
       }]
     })
 
     module.exports = mongoose.model('User', UserSchema);
+
+
+   
