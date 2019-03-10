@@ -1,7 +1,7 @@
-#README
+# README
 
-##Wins
+## Wins
 
-##Issues
+## Issues
 
-##Technologies used
+## Technologies used
