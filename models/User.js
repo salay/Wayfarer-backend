@@ -20,16 +20,4 @@
       }]
     })
 
-<<<<<<< HEAD
-// userSchema.set('toJSON', {
-//   transform: function(doc, ret, opt) {
-//       delete ret['password']
-//       return ret
-//   }
-// })
-//this is to hide the password ^^^
-
-module.exports = mongoose.model('User', UserSchema);
-=======
     module.exports = mongoose.model('User', UserSchema);
->>>>>>> fb4c91d88adc1f755e5aa7ffdc0b6bd94331a6c8

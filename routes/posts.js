@@ -20,6 +20,6 @@
     router.get('/:userId/allPosts',controllers.posts.allUserPosts);
 
     // GETS a SINGLE POST
-    router.get('/:postId/',controllers.posts.singlePost);
+    router.get('/:postId/',controllers.posts.onePost);
 
     module.exports = router;

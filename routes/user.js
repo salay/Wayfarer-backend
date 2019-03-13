@@ -1,4 +1,4 @@
-    const 
+const 
       express = require('express'),
       app = express(),
       router = express.Router(),
@@ -13,11 +13,11 @@
     // route that allows a USER to update their profile data
     router.put('/update', controllers.user.updateUser);
 
-//this is a token check? I think
-router.use((req, res, next) => {
-  console.log('activated')
-  const bearerHeader = req.headers['authorization'];
-  console.log('triggered token check', bearerHeader)
+    // route that retrieves ALL USERS IN THE DB
+    router.get('/all', controllers.user.all);
+
+    // route that gets a SPECIFIC USER based on their ID 
+    router.get('/:userId', controllers.user.thisUser);
 
     // route that DELETES a USER from the DB
     router.delete('/deleteUser', controllers.user.deleteUser);
@@ -48,4 +48,4 @@ router.use((req, res, next) => {
 
 
 
-    module.exports = router;
+    module.exports = router; 
